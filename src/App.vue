@@ -1,20 +1,20 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import DomainHeader from './components/DomainHeader.vue'
-import AuthInfo from './components/AuthInfo.vue'
-import EventsTable from './components/EventsTable.vue'
-import StateFlags from './components/StateFlags.vue'
-import Owner from './components/Owner.vue'
-import AdministrativeContacts from './components/AdministrativeContacts.vue'
+import { ref, onMounted } from "vue";
+import DomainHeader from "./components/DomainHeader.vue";
+import AuthInfo from "./components/AuthInfo.vue";
+import EventsTable from "./components/EventsTable.vue";
+import StateFlags from "./components/StateFlags.vue";
+import Owner from "./components/Owner.vue";
+import AdministrativeContacts from "./components/AdministrativeContacts.vue";
+import NSSet from "./components/NSSet.vue";
 
-
-const domainData = ref(null)
-const verbose = ref(false)
+const domainData = ref(null);
+const verbose = ref(false);
 
 onMounted(async () => {
-  const res = await fetch('/domain-detail.json')
-  domainData.value = await res.json()
-})
+  const res = await fetch("/domain-detail.json");
+  domainData.value = await res.json();
+});
 </script>
 
 <template>
@@ -31,11 +31,14 @@ onMounted(async () => {
         <div class="left">
           <AuthInfo :auth-info="domainData.authInfo" />
           <EventsTable :events="domainData.events" />
+          <StateFlags :flags="domainData.state_flags.flags" />
         </div>
         <div class="right">
           <Owner :owner="domainData.owner" />
-          <StateFlags :flags="domainData.state_flags.flags" />
-          <AdministrativeContacts :contacts="domainData.administrative_contacts" />
+          <AdministrativeContacts
+            :contacts="domainData.administrative_contacts"
+          />
+          <NSSet :nsset="domainData.nsset" />
         </div>
       </div>
     </div>
@@ -56,9 +59,8 @@ onMounted(async () => {
   gap: 2rem;
   flex-wrap: wrap;
 }
-.left, .right {
+.left,
+.right {
   flex: 1 1 300px;
 }
 </style>
-
-
