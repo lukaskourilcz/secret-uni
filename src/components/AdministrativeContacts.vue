@@ -13,22 +13,29 @@ const props = defineProps({
       <div
         v-for="(contact, index) in contacts"
         :key="index"
-        class="contact-card"
+        class="row"
       >
-        <div class="row"><strong>Handle:</strong> {{ contact.handle }}</div>
+        <div class="label">
+          <strong>{{ contact.name }}:</strong>
+        </div>
+        <div class="value">
+          {{ contact.handle }}
 
-        <template v-if="verbose">
-          <div class="row" v-if="contact.publish.organization">
-            <strong>Organization:</strong> {{ contact.organization }}
-          </div>
-          <div class="row" v-if="contact.publish.name">
-            <strong>Name:</strong> {{ contact.name }}
-          </div>
-        </template>
+          <template v-if="verbose">
+            <div v-if="contact.publish.organization">
+              <strong>Organization:</strong> {{ contact.organization }}
+            </div>
+            <div v-if="contact.publish.name">
+              <strong>Name:</strong> {{ contact.name }}
+            </div>
+          </template>
+        </div>
       </div>
     </div>
   </div>
 </template>
+
+---
 
 <style scoped>
 .admin-contacts {
@@ -46,15 +53,18 @@ const props = defineProps({
   padding: 0 1rem 0.5rem 1rem;
 }
 
-.contact-card {
-  border: 1px solid #ddd;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-radius: 4px;
-  background: #f9f9f9;
+.row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
 }
 
-.row {
-  margin-bottom: 0.25rem;
+.label {
+  min-width: 120px;
+  font-weight: bold;
+}
+
+.value {
+  flex: 1;
 }
 </style>

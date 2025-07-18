@@ -73,7 +73,7 @@ const props = defineProps({
 }
 
 .row.dns-row {
-  align-items: center; /* vertical center the DNS label */
+  align-items: center;
 }
 
 .value {
