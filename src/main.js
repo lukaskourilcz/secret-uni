@@ -11,8 +11,10 @@ import {
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { faCircleChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUser, faRightFromBracket, faEye, faEyeSlash);
+library.add(faUser, faRightFromBracket, faEye, faEyeSlash, faCircleChevronDown );
 
 const app = createApp(App);
 app.component("font-awesome-icon", FontAwesomeIcon);

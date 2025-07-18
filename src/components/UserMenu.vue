@@ -15,7 +15,8 @@ function toggleMenu() {
 
 <template>
   <div class="user" @click="toggleMenu">
-    <span class="username">{{ username }} ⌄</span>
+    <span class="username">{{ username }}</span>
+    <span class="icon"><font-awesome-icon :icon="['fas', 'circle-chevron-down']" /></span>
 
     <div v-if="menuOpen" class="menu">
       <div class="menu-header">
@@ -48,7 +49,14 @@ function toggleMenu() {
 }
 
 .username {
-  color: black;
+  color: rgb(58, 58, 58);
+}
+
+.icon {
+  color: rgb(58, 58, 58);
+  opacity: .8;
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
 }
 
 .menu {
