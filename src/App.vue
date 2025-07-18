@@ -68,12 +68,20 @@ onMounted(async () => {
   align-items: flex-start;
 }
 
-.left,
-.right {
-  flex: 1;
-  min-width: 350px;
+.left {
+  flex: 2;
+  min-width: 0;
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+}
+
+.right {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 @media (max-width: 900px) {
