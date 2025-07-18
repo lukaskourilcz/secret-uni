@@ -1,34 +1,72 @@
 <script setup>
 const props = defineProps({
-  nsset: { type: Object, required: true }
-})
+  nsset: { type: Object, required: true },
+});
 </script>
 
 <template>
   <div class="nsset card">
-    <h2>NS Set</h2>
+    <div class="header">NSSet</div>
 
-    <p><strong>Handle:</strong> {{ nsset.handle }}</p>
-    <p><strong>Registrar:</strong> {{ nsset.registrar }}</p>
+    <div class="content">
+      <div class="row">
+        <div class="label"><strong>Handle:</strong></div>
+        <div class="value">{{ nsset.handle }}</div>
+      </div>
 
-    <h3>DNS Records</h3>
-    <ul>
-      <li v-for="(dns, index) in nsset.dns" :key="index">
-        {{ dns.name }} — {{ dns.ip_address }}
-      </li>
-    </ul>
+      <div class="row">
+        <div class="label"><strong>Registrar:</strong></div>
+        <div class="value">{{ nsset.registrar }}</div>
+      </div>
+
+      <div class="row dns-row">
+        <div class="label dns"><strong>DNS Records:</strong></div>
+        <div class="value">
+          <div v-for="(dns, index) in nsset.dns" :key="index" class="dns-item">
+            {{ dns.name }} — {{ dns.ip_address }}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
+---
+
 <style scoped>
 .nsset {
-  margin-top: 0.5rem;
-}
-ul {
-  list-style: none;
   padding: 0;
 }
-li {
-  padding: 0.25rem 0;
+
+.header {
+  background: #f1f1f1;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+.content {
+  padding: 0 1rem 0.5rem 1rem;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+  align-items: flex-start; /* default, keeps normal labels */
+}
+
+.label {
+  display: flex;
+  min-width: 120px;
+  font-weight: bold;
+}
+
+.label.dns {
+  align-items: center; /* explicitly center the DNS label */
+}
+
+.row.dns-row {
+  align-items: center; /* center both label + value vertically */
 }
 </style>
