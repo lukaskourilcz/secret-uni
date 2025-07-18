@@ -61,14 +61,14 @@ function toggleMenu() {
 .icon {
   color: #fff;
   opacity: 0.8;
-  margin-left: 0.3rem;
+  margin-left: 0.7rem;
 }
 
 .menu {
   position: absolute;
   right: 0;
   top: calc(100% + 4px);
-  background: #fff;
+  background: #f8f8f8;
   border: 1px solid #ddd;
   border-radius: 6px;
   width: 220px;
@@ -81,12 +81,12 @@ function toggleMenu() {
   display: flex;
   align-items: center;
   padding: 0.75rem;
-  background: #f9f9f9;
+  background: #ffffff;
 }
 
 .avatar {
   font-size: 1.2rem;
-  margin-right: 0.6rem;
+  margin: 0 0.4rem;
   color: #666;
 }
 
@@ -98,11 +98,13 @@ function toggleMenu() {
 .name {
   font-weight: 600;
   color: #333;
+  margin-left: 0.4rem;
 }
 
 .role {
   font-size: 0.75rem;
   color: #999;
+  margin-left: 0.4rem;
 }
 
 .menu-divider {

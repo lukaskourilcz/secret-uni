@@ -81,7 +81,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 .sidebar {
   width: 200px;
-  background: #f7f7f7;
+  background: #ffffff;
   border-right: 1px solid #ddd;
   display: flex;
   flex-direction: column;

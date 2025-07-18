@@ -70,6 +70,7 @@ const props = defineProps({
 }
 
 .icon {
+  margin-right: 0.2rem;
   color: rgb(2, 190, 2);
 }
 

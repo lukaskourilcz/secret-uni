@@ -36,9 +36,9 @@ function toggle() {
       <button class="auth-btn" @click="toggle">
         {{ showSecret ? authInfo : "SHOW" }}
       </button>
-
-      <span class="label expires">Expires at:</span>
-      <span>{{ formattedExpiresAt }}</span>
+      <span class="expires">
+        <span class="label">Expires at:</span> {{ formattedExpiresAt }}
+      </span>
     </div>
   </div>
 </template>
@@ -48,22 +48,24 @@ function toggle() {
   padding: 0;
 }
 
+.auth-info .row {
+  justify-content: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
 .row {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   padding: 0.75rem 1rem;
   font-size: 0.9rem;
   flex-wrap: wrap;
 }
 
 .label {
-  font-weight: 600;
+  font-weight: 500;
   color: #333;
-}
-
-.label.expires {
-  margin-left: auto;
 }
 
 .auth-btn {
@@ -79,5 +81,10 @@ function toggle() {
 
 .auth-btn:hover {
   background-color: #2980b9;
+}
+
+.expires {
+  font-size: 0.85rem;
+  color: #555;
 }
 </style>
