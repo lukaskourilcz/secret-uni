@@ -6,6 +6,8 @@ const props = defineProps({
 });
 
 const showSecret = ref(false);
+const authInfo = 'secretPassword875!//'
+
 </script>
 
 <template>
@@ -26,5 +28,6 @@ const showSecret = ref(false);
 .secret {
   font-weight: bold;
   color: darkred;
+  opacity: .5;
 }
 </style>
