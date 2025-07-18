@@ -17,6 +17,9 @@
   --spacing-lg: 2rem;
 
   --radius: 6px;
+
+  --card-padding: 1.5rem;
+
 }
 
 body {

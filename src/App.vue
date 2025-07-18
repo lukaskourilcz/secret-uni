@@ -80,10 +80,7 @@ onMounted(async () => {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  padding: var(--spacing-sm);
-  padding-left: 1rem;
+  padding: var(--card-padding);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-
 </style>
-
