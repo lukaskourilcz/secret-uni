@@ -22,7 +22,7 @@ const props = defineProps({
 
 <style scoped>
 .nsset {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 ul {
   list-style: none;

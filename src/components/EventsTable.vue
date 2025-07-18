@@ -37,7 +37,7 @@ function formatDate(dateStr) {
 
 <style scoped>
 .events {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 table {
   width: 100%;

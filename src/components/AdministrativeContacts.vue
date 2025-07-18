@@ -26,7 +26,7 @@ const props = defineProps({
 
 <style scoped>
 .admin-contacts {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 .contact-card {
   border: 1px solid #ddd;

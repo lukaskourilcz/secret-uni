@@ -36,7 +36,7 @@ const filteredFlags = computed(() => {
 
 <style scoped>
 .flags {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 ul {
   list-style: none;
