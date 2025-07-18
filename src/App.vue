@@ -7,7 +7,7 @@ import StateFlags from "./components/StateFlags.vue";
 import Owner from "./components/Owner.vue";
 import AdministrativeContacts from "./components/AdministrativeContacts.vue";
 import NSSet from "./components/NSSet.vue";
-import KeySet from './components/KeySet.vue'
+import KeySet from "./components/KeySet.vue";
 
 const domainData = ref(null);
 const verbose = ref(false);

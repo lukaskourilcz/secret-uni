@@ -1,12 +1,15 @@
+<script setup>
+const props = defineProps({
+  contacts: { type: Array, required: true },
+  verbose: { type: Boolean, required: true },
+});
+</script>
+
 <template>
   <div class="admin-contacts">
     <h2>Administrative Contacts</h2>
 
-    <div
-      v-for="(contact, index) in contacts"
-      :key="index"
-      class="contact-card"
-    >
+    <div v-for="(contact, index) in contacts" :key="index" class="contact-card">
       <p><strong>Handle:</strong> {{ contact.handle }}</p>
 
       <template v-if="verbose">
@@ -20,13 +23,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-const props = defineProps({
-  contacts: { type: Array, required: true },
-  verbose: { type: Boolean, required: true }
-})
-</script>
 
 <style scoped>
 .admin-contacts {

@@ -1,7 +1,18 @@
 <script setup>
+import { computed } from "vue";
+
 const props = defineProps({
-  flags: { type: Array, required: true }
-})
+  flags: { type: Array, required: true },
+  verbose: { type: Boolean, required: true },
+});
+
+const filteredFlags = computed(() => {
+  if (props.verbose) {
+    return props.flags;
+  } else {
+    return props.flags.filter((flag) => flag.active);
+  }
+});
 </script>
 
 <template>
@@ -9,7 +20,7 @@ const props = defineProps({
     <h2>State Flags</h2>
     <ul>
       <li
-        v-for="flag in flags"
+        v-for="flag in filteredFlags"
         :key="flag.name"
         :class="{ active: flag.active, inactive: !flag.active }"
       >
