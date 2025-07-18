@@ -57,7 +57,7 @@ const props = defineProps({
 
       <template v-else>
         <div v-for="(contact, index) in contacts" :key="index" class="row">
-          <div class="label">{{ contact.name }}:</div>
+          <div class="label">{{ contact.name }}: </div>
           <div class="value">
             <a href="#">{{ contact.handle }}</a>
           </div>
