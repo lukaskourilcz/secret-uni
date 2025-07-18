@@ -53,7 +53,7 @@ const props = defineProps({
   display: flex;
   gap: 1rem;
   margin-bottom: 0.25rem;
-  align-items: flex-start; /* default, keeps normal labels */
+  align-items: flex-start;
 }
 
 .label {
@@ -63,10 +63,10 @@ const props = defineProps({
 }
 
 .label.dns {
-  align-items: center; /* explicitly center the DNS label */
+  align-items: center;
 }
 
 .row.dns-row {
-  align-items: center; /* center both label + value vertically */
+  align-items: center;
 }
 </style>
