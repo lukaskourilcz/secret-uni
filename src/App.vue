@@ -8,9 +8,16 @@
     />
 
     <div v-if="domainData" class="content">
-      <AuthInfo :auth-info="domainData.authInfo" />
-      <EventsTable :events="domainData.events" />
-      <StateFlags :flags="domainData.state_flags.flags" />
+      <div class="main">
+        <div class="left">
+          <AuthInfo :auth-info="domainData.authInfo" />
+          <EventsTable :events="domainData.events" />
+        </div>
+        <div class="right">
+          <Owner :owner="domainData.owner" />
+          <StateFlags :flags="domainData.state_flags.flags" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -21,6 +28,7 @@ import DomainHeader from './components/DomainHeader.vue'
 import AuthInfo from './components/AuthInfo.vue'
 import EventsTable from './components/EventsTable.vue'
 import StateFlags from './components/StateFlags.vue'
+import Owner from './components/Owner.vue'
 
 const domainData = ref(null)
 const verbose = ref(false)
@@ -39,5 +47,13 @@ onMounted(async () => {
 }
 .content {
   margin-top: 2rem;
+}
+.main {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.left, .right {
+  flex: 1 1 300px;
 }
 </style>
