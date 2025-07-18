@@ -69,7 +69,7 @@ function toggleMenu() {
 }
 
 .avatar {
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-right: 0.5rem;
   padding: 0.3rem;
 }
@@ -79,7 +79,7 @@ function toggleMenu() {
 }
 
 .role {
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   color: #888;
 }
 
@@ -93,6 +93,7 @@ function toggleMenu() {
   padding: 0.75rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   cursor: pointer;
 }
