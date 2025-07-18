@@ -1,19 +1,24 @@
 <template>
-  <div class="flags card">
-    <h2>State Flags</h2>
-    <ul>
-      <li
-        v-for="flag in filteredFlags"
-        :key="flag.name"
-        :class="{ active: flag.active, inactive: !flag.active }"
-      >
-        <span class="icon">
-          <span v-if="flag.active">✅</span>
-          <span v-else>❌</span>
-        </span>
-        <span>{{ flag.description }}</span>
-      </li>
-    </ul>
+  <div class="stateflags card">
+    <div class="header">
+      State Flags:
+    </div>
+
+    <div class="flags-container">
+      <div class="column" v-for="(columnFlags, colIdx) in columns" :key="colIdx">
+        <div v-for="(flag, index) in columnFlags" :key="index" class="flag-row">
+          <span
+            class="icon"
+            :class="flag.active ? 'active' : 'inactive'"
+          >
+            {{ flag.active ? '✅' : '❌' }}
+          </span>
+          <span :class="flag.active ? 'text-active' : 'text-inactive'">
+            {{ flag.description }}
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -32,30 +37,63 @@ const filteredFlags = computed(() => {
     return props.flags.filter(flag => flag.active)
   }
 })
+
+const columns = computed(() => {
+  const col1 = filteredFlags.value.slice(0, 10)
+  const col2 = filteredFlags.value.slice(10, 20)
+  return [col1, col2]
+})
 </script>
 
+
+
 <style scoped>
-.flags {
-  margin-top: 0.5rem;
-}
-ul {
-  list-style: none;
+.stateflags {
   padding: 0;
 }
-li {
+
+.header {
+  background: #f1f1f1;
+  padding: 0.5rem;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  padding-left: 1rem;
+}
+
+.flags-container {
+  display: flex;
+  gap: 2rem;
+  padding: 0.8rem 0.5rem;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-left: 0.5rem;
+}
+
+.flag-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0;
+  gap: 0.25rem;
+  font-size: 0.8rem;
 }
-.active {
-  color: var(--color-success);
-}
-.inactive {
-  color: var(--color-danger);
-}
+
 .icon {
-  width: 1.5rem;
-  text-align: center;
+  font-size: 1rem;
+}
+
+.text-active {
+  color: green;
+    padding-left: 0.2rem;
+}
+
+.text-inactive {
+  color: red;
+    padding-left: 0.2rem;
+
 }
 </style>
+
