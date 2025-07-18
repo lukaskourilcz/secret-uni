@@ -97,6 +97,5 @@ onMounted(async () => {
   border-radius: var(--radius);
   padding: var(--card-padding);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  flex: 1;
 }
 </style>
