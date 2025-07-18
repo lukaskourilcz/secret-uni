@@ -50,6 +50,7 @@ function toggleMenu() {
 
 .username {
   color: rgb(58, 58, 58);
+  font-size: 0.9rem;
 }
 
 .icon {
