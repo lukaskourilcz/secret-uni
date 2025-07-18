@@ -59,7 +59,7 @@ onMounted(async () => {
 }
 
 .content {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 
 .main {
