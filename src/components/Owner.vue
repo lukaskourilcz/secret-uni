@@ -3,7 +3,9 @@
     <div class="header">Owner</div>
 
     <div class="content">
-      <div class="row"><span><font-awesome-icon class="icon" :icon="['fas', 'eye']" /></span><strong>Handle:</strong> {{ owner.handle }}</div>
+      <div class="row"><span><font-awesome-icon class="icon" :icon="['fas', 'eye']" /></span><strong>Handle:</strong><a
+            href="#"
+          > {{ owner.handle }}</a></div>
       <div class="row">
         <span><font-awesome-icon class="icon" :icon="['fas', 'eye']" /></span><strong>Organization:</strong> {{ owner.organization }}
       </div>
@@ -42,5 +44,14 @@ const props = defineProps({
 
 .row {
   margin-bottom: 0.25rem;
+}
+
+a {
+  margin-left: 0.2rem;
+  color: #3498db;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 </style>

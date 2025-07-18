@@ -11,12 +11,16 @@ const props = defineProps({
     <div class="content">
       <div class="row">
         <div class="label"><strong>Handle:</strong></div>
-        <div class="value">{{ keyset.handle }}</div>
+        <div class="value"><a
+            href="#"
+            >{{ keyset.handle }}</a></div>
       </div>
 
       <div class="row">
         <div class="label"><strong>Registrar:</strong></div>
-        <div class="value">{{ keyset.registrar }}</div>
+        <div class="value"><a
+            href="#"
+            >{{ keyset.registrar }}</a></div>
       </div>
 
       <div class="row dns-row">
@@ -83,5 +87,13 @@ const props = defineProps({
 .dns-item {
   padding: 0.25rem 0;
   word-break: break-all;
+}
+
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 </style>

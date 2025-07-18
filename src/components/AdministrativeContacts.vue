@@ -50,10 +50,12 @@ const props = defineProps({
           class="row"
         >
           <div class="label">
-            <strong>{{ contact.name }}:</strong>
+           <strong>{{ contact.name }}:</strong>
           </div>
           <div class="value">
-            {{ contact.handle }}
+             <a
+            href="#"
+          >{{ contact.handle }}</a>
           </div>
         </div>
       </template>
