@@ -16,26 +16,28 @@ function toggleMenu() {
 <template>
   <div class="user" @click="toggleMenu">
     <span class="username">{{ username }}</span>
-    <span class="icon"><font-awesome-icon :icon="['fas', 'circle-chevron-down']" /></span>
+    <span class="icon">
+      <font-awesome-icon :icon="['fas', 'circle-chevron-down']" />
+    </span>
 
     <div v-if="menuOpen" class="menu">
       <div class="menu-header">
         <div class="avatar">
           <font-awesome-icon :icon="['far', 'user']" />
         </div>
-        <div>
+        <div class="info">
           <div class="name">{{ username }}</div>
-          <div class="role">admin</div>
+          <div class="role">Admin</div>
         </div>
       </div>
 
       <div class="menu-divider"></div>
 
       <div class="menu-item">
-        <span class="icon"
-          ><font-awesome-icon :icon="['fas', 'right-from-bracket']"
-        /></span>
-        Logout
+        <span class="icon">
+          <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
+        </span>
+        <span>Logout</span>
       </div>
     </div>
   </div>
@@ -45,53 +47,62 @@ function toggleMenu() {
 .user {
   position: relative;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  color: #fff;
 }
 
 .username {
-  color: rgb(58, 58, 58);
   font-size: 0.9rem;
+  color: #fff;
 }
 
 .icon {
-  color: rgb(58, 58, 58);
-  opacity: .8;
-  margin-left: 0.4rem;
-  margin-right: 0.4rem;
+  color: #fff;
+  opacity: 0.8;
+  margin-left: 0.3rem;
 }
 
 .menu {
   position: absolute;
   right: 0;
-  top: 100%;
-  background: white;
+  top: calc(100% + 4px);
+  background: #fff;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 6px;
   width: 220px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  margin-top: 4px;
-  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: hidden;
 }
 
 .menu-header {
   display: flex;
   align-items: center;
   padding: 0.75rem;
+  background: #f9f9f9;
 }
 
 .avatar {
-  font-size: 1rem;
-  margin-right: 0.5rem;
-  padding: 0.3rem;
+  font-size: 1.2rem;
+  margin-right: 0.6rem;
+  color: #666;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
 }
 
 .name {
   font-weight: 600;
+  color: #333;
 }
 
 .role {
-  font-size: 0.7rem;
-  color: #888;
+  font-size: 0.75rem;
+  color: #999;
 }
 
 .menu-divider {
@@ -107,13 +118,15 @@ function toggleMenu() {
   justify-content: center;
   gap: 0.5rem;
   cursor: pointer;
+  color: #333;
+  font-weight: 500;
 }
 
 .menu-item:hover {
   background-color: #f5f5f5;
 }
 
-.icon {
-  font-size: 1rem;
+.menu-item .icon {
+  color: #888;
 }
 </style>

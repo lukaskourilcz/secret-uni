@@ -1,62 +1,46 @@
-<script setup>
-import UserMenu from "./UserMenu.vue";
+<template>
+  <div class="domain-header">
+    <h2>{{ domain }}</h2>
 
+    <div class="toggle-container">
+      <label class="toggle">
+        <input
+          type="checkbox"
+          :checked="verbose"
+          @change="$emit('toggle-verbose', $event.target.checked)"
+        />
+        <span class="slider"></span>
+      </label>
+      <span class="label-text">Verbose view</span>
+    </div>
+  </div>
+</template>
+
+<script setup>
 const props = defineProps({
   domain: { type: String, required: true },
   verbose: { type: Boolean, required: true },
 });
 </script>
 
-<template>
-  <div class="header">
-    <div class="left">
-      <h1>{{ domain }}</h1>
-      <div class="toggle-container">
-        <label class="toggle">
-          <input
-            type="checkbox"
-            :checked="verbose"
-            @change="$emit('toggle-verbose', $event.target.checked)"
-          />
-          <span class="slider"></span>
-        </label>
-        <span class="label-text">Verbose view</span>
-      </div>
-    </div>
-    <div class="right">
-      <UserMenu username="Jan Musílek" />
-    </div>
-  </div>
-</template>
-
 <style scoped>
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* this is key! */
-  flex-wrap: wrap;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 0.5rem;
-  gap: 1rem;
-}
-
-.left {
+.domain-header {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.right {
-  display: flex;
-  align-items: end;
-  margin-top: 3.5rem;
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #2c3e50;
 }
 
 .toggle-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .toggle {
@@ -107,6 +91,6 @@ const props = defineProps({
 .label-text {
   font-size: 0.85rem;
   font-weight: 500;
-  opacity: .7;
+  opacity: 0.7;
 }
 </style>

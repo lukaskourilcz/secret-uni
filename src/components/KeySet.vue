@@ -6,7 +6,7 @@ const props = defineProps({
 
 <template>
   <div class="keyset card">
-    <div class="header">Key Set</div>
+    <div class="header">KeySet</div>
 
     <div class="content">
       <div class="row">

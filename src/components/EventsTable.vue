@@ -1,32 +1,26 @@
 <template>
   <div class="events card">
-    <div class="header">Events:</div>
+    <div class="header">Events</div>
 
-    <div
-      v-for="({ name, event }, index) in orderedEvents"
-      :key="index"
-      class="row"
-    >
-      <div class="cell label">{{ name }}:</div>
-      <div class="cell date">
-        {{
-          event?.timestamp ? formatDate(event.timestamp) : "-------------------"
-        }}
-      </div>
-
-      <template v-if="event?.registrar_handle">
-        <div class="cell label">Registrar:</div>
-        <div class="cell value">
-          <a href="#" class="registrar-link">
-            {{ event.registrar_handle }}
-          </a>
+    <div class="table">
+      <div
+        v-for="({ name, event }, index) in orderedEvents"
+        :key="index"
+        class="table-row"
+      >
+        <div class="label">{{ name }}</div>
+        <div class="value">
+          {{ event?.timestamp ? formatDate(event.timestamp) : "—" }}
         </div>
-      </template>
-
-      <template v-else>
-        <div class="cell" />
-        <div class="cell" />
-      </template>
+        <div class="value">
+          <template v-if="event?.registrar_handle">
+            <a href="#" class="registrar-link">{{ event.registrar_handle }}</a>
+          </template>
+          <template v-else>
+            —
+          </template>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -64,45 +58,42 @@ function formatDate(dateStr) {
 }
 
 .header {
-  background: #f1f1f1;
-  padding: 0.5rem;
+  background: #f1f4f8;
+  padding: 0.5rem 1rem;
   font-weight: bold;
+  font-size: 1rem;
   border-bottom: 1px solid #ddd;
-  padding-left: 1rem;
 }
 
-.row {
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-row {
   display: grid;
-  grid-template-columns: 15% 40% 15% 35%;
-  gap: 0.25rem 0.5rem;
-  padding: 0.5rem;
-  border-bottom: 1px solid #eee;
-  font-size: 0.75rem;
+  grid-template-columns: 30% 40% 30%;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #f1f1f1;
   align-items: center;
-  width: 100%;
+  font-size: 0.85rem;
 }
 
-.cell.label {
-  font-weight: bold;
+.label {
+  font-weight: 600;
+  color: #444;
+}
+
+.value {
+  color: #222;
   white-space: nowrap;
-  justify-self: start;
-  padding-left: 0.5rem;
-}
-
-.cell.value {
-  color: #333;
-  word-break: break-word;
-  justify-self: start;
-}
-
-.cell.date {
-  text-align: center;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 
 .registrar-link {
-  color: #4a90e2;
+  color: #3498db;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .registrar-link:hover {
