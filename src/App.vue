@@ -32,12 +32,16 @@ onMounted(async () => {
         <div class="left">
           <AuthInfo :auth-info="domainData.authInfo" />
           <EventsTable :events="domainData.events" />
-          <StateFlags :flags="domainData.state_flags.flags" />
+          <StateFlags
+            :flags="domainData.state_flags.flags"
+            :verbose="verbose"
+          />
         </div>
         <div class="right">
           <Owner :owner="domainData.owner" />
           <AdministrativeContacts
             :contacts="domainData.administrative_contacts"
+            :verbose="verbose"
           />
           <NSSet :nsset="domainData.nsset" />
           <KeySet :keyset="domainData.keyset" />
