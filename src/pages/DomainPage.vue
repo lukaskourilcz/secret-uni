@@ -6,7 +6,7 @@ import DomainHeader from "../components/DomainHeader.vue";
 import AuthInfo from "../components/AuthInfo.vue";
 import EventsTable from "../components/EventsTable.vue";
 import StateFlags from "../components/StateFlags.vue";
-import Owner from "../components/Owner.vue";
+import Owner from "../components/OwnerCard.vue";
 import AdministrativeContacts from "../components/AdministrativeContacts.vue";
 import NSSet from "../components/NSSet.vue";
 import KeySet from "../components/KeySet.vue";

@@ -1,3 +1,10 @@
+<script setup>
+const props = defineProps({
+  domain: { type: String, required: true },
+  verbose: { type: Boolean, required: true },
+});
+</script>
+
 <template>
   <div class="domain-header">
     <h2>{{ domain }}</h2>
@@ -15,13 +22,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-const props = defineProps({
-  domain: { type: String, required: true },
-  verbose: { type: Boolean, required: true },
-});
-</script>
 
 <style scoped>
 .domain-header {

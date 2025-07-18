@@ -1,30 +1,3 @@
-<template>
-  <div class="events card">
-    <div class="header">Events</div>
-
-    <div class="table">
-      <div
-        v-for="({ name, event }, index) in orderedEvents"
-        :key="index"
-        class="table-row"
-      >
-        <div class="label">{{ name }}</div>
-        <div class="value">
-          {{ event?.timestamp ? formatDate(event.timestamp) : "—" }}
-        </div>
-        <div class="value">
-          <template v-if="event?.registrar_handle">
-            <a href="#" class="registrar-link">{{ event.registrar_handle }}</a>
-          </template>
-          <template v-else>
-            —
-          </template>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { computed } from "vue";
 
@@ -51,6 +24,31 @@ function formatDate(dateStr) {
   });
 }
 </script>
+
+<template>
+  <div class="events card">
+    <div class="header">Events</div>
+
+    <div class="table">
+      <div
+        v-for="({ name, event }, index) in orderedEvents"
+        :key="index"
+        class="table-row"
+      >
+        <div class="label">{{ name }}</div>
+        <div class="value">
+          {{ event?.timestamp ? formatDate(event.timestamp) : "—" }}
+        </div>
+        <div class="value">
+          <template v-if="event?.registrar_handle">
+            <a href="#" class="registrar-link">{{ event.registrar_handle }}</a>
+          </template>
+          <template v-else> — </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .events {

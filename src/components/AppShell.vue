@@ -1,3 +1,8 @@
+<script setup>
+import UserMenu from "./UserMenu.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+</script>
+
 <template>
   <div class="app">
     <header class="topbar">
@@ -28,11 +33,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import UserMenu from "./UserMenu.vue";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-</script>
 
 <style scoped>
 .app {

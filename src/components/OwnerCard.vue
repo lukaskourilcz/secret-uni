@@ -1,3 +1,9 @@
+<script setup>
+const props = defineProps({
+  owner: { type: Object, required: true },
+});
+</script>
+
 <template>
   <div class="owner card">
     <div class="header">Owner</div>
@@ -28,12 +34,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-const props = defineProps({
-  owner: { type: Object, required: true },
-});
-</script>
 
 <style scoped>
 .owner {

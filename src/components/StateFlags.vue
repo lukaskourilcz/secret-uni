@@ -1,26 +1,3 @@
-<template>
-  <div class="stateflags card">
-    <div class="header">State Flags:</div>
-
-    <div class="flags-container">
-      <div
-        class="column"
-        v-for="(columnFlags, colIdx) in columns"
-        :key="colIdx"
-      >
-        <div v-for="(flag, index) in columnFlags" :key="index" class="flag-row">
-          <span class="icon" :class="flag.active ? 'active' : 'inactive'">
-            {{ flag.active ? "✅" : "❌" }}
-          </span>
-          <span :class="flag.active ? 'text-active' : 'text-inactive'">
-            {{ flag.description }}
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { computed } from "vue";
 
@@ -43,6 +20,29 @@ const columns = computed(() => {
   return [col1, col2];
 });
 </script>
+
+<template>
+  <div class="stateflags card">
+    <div class="header">State Flags:</div>
+
+    <div class="flags-container">
+      <div
+        class="column"
+        v-for="(columnFlags, colIdx) in columns"
+        :key="colIdx"
+      >
+        <div v-for="(flag, index) in columnFlags" :key="index" class="flag-row">
+          <span class="icon" :class="flag.active ? 'active' : 'inactive'">
+            {{ flag.active ? "✅" : "❌" }}
+          </span>
+          <span :class="flag.active ? 'text-active' : 'text-inactive'">
+            {{ flag.description }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .stateflags {
