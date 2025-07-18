@@ -10,27 +10,53 @@ const props = defineProps({
     <div class="header">Administrative Contacts</div>
 
     <div class="content">
-      <div
-        v-for="(contact, index) in contacts"
-        :key="index"
-        class="row"
-      >
-        <div class="label">
-          <strong>{{ contact.name }}:</strong>
-        </div>
-        <div class="value">
-          {{ contact.handle }}
+      <template v-if="verbose">
+        <div
+          v-for="(contact, index) in contacts"
+          :key="index"
+          class="contact-card"
+        >
+          <div class="row">
+            <div class="label"><strong>Handle:</strong></div>
+            <div class="value">
+              <a href="#">{{ contact.handle }}</a>
+            </div>
+          </div>
 
-          <template v-if="verbose">
-            <div v-if="contact.publish.organization">
-              <strong>Organization:</strong> {{ contact.organization }}
+          <div class="row">
+            <div class="label">
+              <span v-if="contact.publish.organization">✅</span>
+              <span v-else>❌</span>
+              <strong> Organization:</strong>
             </div>
-            <div v-if="contact.publish.name">
-              <strong>Name:</strong> {{ contact.name }}
+            <div class="value">{{ contact.organization }}</div>
+          </div>
+
+          <div class="row">
+            <div class="label">
+              <span v-if="contact.publish.name">✅</span>
+              <span v-else>❌</span>
+              <strong> Name:</strong>
             </div>
-          </template>
+            <div class="value">{{ contact.name }}</div>
+          </div>
         </div>
-      </div>
+      </template>
+
+      <template v-else>
+        <div
+          v-for="(contact, index) in contacts"
+          :key="index"
+          class="row"
+        >
+          <div class="label">
+            <strong>{{ contact.name }}:</strong>
+          </div>
+          <div class="value">
+            {{ contact.handle }}
+          </div>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -53,18 +79,35 @@ const props = defineProps({
   padding: 0 1rem 0.5rem 1rem;
 }
 
+.contact-card {
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  padding: 0.5rem 1rem;
+}
+
 .row {
   display: flex;
   gap: 1rem;
   margin-bottom: 0.25rem;
+  align-items: flex-start;
 }
 
 .label {
-  min-width: 120px;
+  min-width: 150px;
   font-weight: bold;
 }
 
 .value {
   flex: 1;
+}
+
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 </style>
