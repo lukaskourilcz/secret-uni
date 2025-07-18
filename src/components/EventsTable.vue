@@ -60,7 +60,7 @@ function formatDate(dateStr) {
 .header {
   background: #f1f4f8;
   padding: 0.5rem 1rem;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 1rem;
   border-bottom: 1px solid #ddd;
 }
@@ -80,7 +80,7 @@ function formatDate(dateStr) {
 }
 
 .label {
-  font-weight: 600;
+  font-weight: 500;
   color: #444;
 }
 
@@ -93,7 +93,7 @@ function formatDate(dateStr) {
 .registrar-link {
   color: #3498db;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .registrar-link:hover {

@@ -66,9 +66,9 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 }
 
 .topbar h1 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 0;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   color: white;
   font-weight: 500;
 }
@@ -125,6 +125,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 .user {
   display: flex;
   align-items: center;
+  margin-right: 0.2rem;
 }
 
 .icon {

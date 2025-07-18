@@ -11,14 +11,14 @@ const props = defineProps({
     <div class="content">
       <div class="row">
         <div class="label">Handle:</div>
-        <div>
+        <div class="value">
           <a href="#">{{ nsset.handle }}</a>
         </div>
       </div>
 
       <div class="row">
         <div class="label">Registrar:</div>
-        <div>
+        <div class="value">
           <a href="#">{{ nsset.registrar }}</a>
         </div>
       </div>
@@ -52,15 +52,20 @@ const props = defineProps({
   padding: 0 1rem 0.5rem 1rem;
 }
 
+.value {
+  flex: 1;
+}
+
 .row {
   display: flex;
   gap: 1rem;
   margin-bottom: 0.25rem;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .label {
   display: flex;
+  align-items: center;
   min-width: 120px;
   font-weight: 500;
 }
