@@ -7,6 +7,7 @@ import StateFlags from "./components/StateFlags.vue";
 import Owner from "./components/Owner.vue";
 import AdministrativeContacts from "./components/AdministrativeContacts.vue";
 import NSSet from "./components/NSSet.vue";
+import KeySet from './components/KeySet.vue'
 
 const domainData = ref(null);
 const verbose = ref(false);
@@ -39,6 +40,7 @@ onMounted(async () => {
             :contacts="domainData.administrative_contacts"
           />
           <NSSet :nsset="domainData.nsset" />
+          <KeySet :keyset="domainData.keyset" />
         </div>
       </div>
     </div>
