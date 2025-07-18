@@ -1,3 +1,15 @@
+<script setup>
+const props = defineProps({
+  events: { type: Object, required: true }
+})
+
+function formatDate(dateStr) {
+  if (!dateStr) return '-'
+  const date = new Date(dateStr)
+  return date.toLocaleString()
+}
+</script>
+
 <template>
   <div class="events">
     <h2>Events</h2>
@@ -22,17 +34,6 @@
   </div>
 </template>
 
-<script setup>
-const props = defineProps({
-  events: { type: Object, required: true }
-})
-
-function formatDate(dateStr) {
-  if (!dateStr) return '-'
-  const date = new Date(dateStr)
-  return date.toLocaleString()
-}
-</script>
 
 <style scoped>
 .events {

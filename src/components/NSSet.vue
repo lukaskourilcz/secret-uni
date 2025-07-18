@@ -1,3 +1,9 @@
+<script setup>
+const props = defineProps({
+  nsset: { type: Object, required: true }
+})
+</script>
+
 <template>
   <div class="nsset">
     <h2>NS Set</h2>
@@ -13,12 +19,6 @@
     </ul>
   </div>
 </template>
-
-<script setup>
-const props = defineProps({
-  nsset: { type: Object, required: true }
-})
-</script>
 
 <style scoped>
 .nsset {

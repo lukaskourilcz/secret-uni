@@ -1,3 +1,9 @@
+<script setup>
+const props = defineProps({
+  keyset: { type: Object, required: true },
+});
+</script>
+
 <template>
   <div class="keyset">
     <h2>Key Set</h2>
@@ -13,12 +19,6 @@
     </ul>
   </div>
 </template>
-
-<script setup>
-const props = defineProps({
-  keyset: { type: Object, required: true }
-})
-</script>
 
 <style scoped>
 .keyset {

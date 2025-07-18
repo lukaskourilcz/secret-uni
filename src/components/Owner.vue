@@ -1,3 +1,9 @@
+<script setup>
+const props = defineProps({
+  owner: { type: Object, required: true }
+})
+</script>
+
 <template>
   <div class="owner">
     <h2>Owner</h2>
@@ -6,12 +12,6 @@
     <p><strong>Name:</strong> {{ owner.name }}</p>
   </div>
 </template>
-
-<script setup>
-const props = defineProps({
-  owner: { type: Object, required: true }
-})
-</script>
 
 <style scoped>
 .owner {

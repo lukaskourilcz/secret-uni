@@ -1,3 +1,9 @@
+<script setup>
+const props = defineProps({
+  contacts: { type: Array, required: true }
+})
+</script>
+
 <template>
   <div class="admin-contacts">
     <h2>Administrative Contacts</h2>
@@ -17,12 +23,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-const props = defineProps({
-  contacts: { type: Array, required: true }
-})
-</script>
 
 <style scoped>
 .admin-contacts {

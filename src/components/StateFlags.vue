@@ -1,3 +1,9 @@
+<script setup>
+const props = defineProps({
+  flags: { type: Array, required: true }
+})
+</script>
+
 <template>
   <div class="flags">
     <h2>State Flags</h2>
@@ -12,12 +18,6 @@
     </ul>
   </div>
 </template>
-
-<script setup>
-const props = defineProps({
-  flags: { type: Array, required: true }
-})
-</script>
 
 <style scoped>
 .flags {

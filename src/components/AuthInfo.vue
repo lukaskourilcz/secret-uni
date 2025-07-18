@@ -1,11 +1,3 @@
-<template>
-  <div class="auth-info">
-    <span>AuthInfo:</span>
-    <button @click="showSecret = !showSecret">Show</button>
-    <span v-if="showSecret" class="secret">{{ authInfo }}</span>
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue'
 
@@ -15,6 +7,14 @@ const props = defineProps({
 
 const showSecret = ref(false)
 </script>
+
+<template>
+  <div class="auth-info">
+    <span>AuthInfo:</span>
+    <button @click="showSecret = !showSecret">Show</button>
+    <span v-if="showSecret" class="secret">{{ authInfo }}</span>
+  </div>
+</template>
 
 <style scoped>
 .auth-info {
