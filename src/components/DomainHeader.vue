@@ -1,10 +1,10 @@
 <script setup>
-import UserMenu from './UserMenu.vue'
+import UserMenu from "./UserMenu.vue";
 
 const props = defineProps({
   domain: { type: String, required: true },
-  verbose: { type: Boolean, required: true }
-})
+  verbose: { type: Boolean, required: true },
+});
 </script>
 
 <template>

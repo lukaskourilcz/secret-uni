@@ -3,13 +3,28 @@
     <div class="header">Owner</div>
 
     <div class="content">
-      <div class="row"><span><font-awesome-icon class="icon" :icon="['fas', 'eye']" /></span><strong>Handle:</strong><a
-            href="#"
-          > {{ owner.handle }}</a></div>
       <div class="row">
-        <span><font-awesome-icon class="icon" :icon="['fas', 'eye']" /></span><strong>Organization:</strong> {{ owner.organization }}
+        <div class="label">
+          <font-awesome-icon class="icon" :icon="['fas', 'eye']" />
+          Handle:
+        </div>
+        <div class="value">
+          <a href="#">{{ owner.handle }}</a>
+        </div>
       </div>
-      <div class="row"><strong>Name:</strong> {{ owner.name }}</div>
+
+      <div class="row">
+        <div class="label">
+          <font-awesome-icon class="icon" :icon="['fas', 'eye']" />
+          Organization:
+        </div>
+        <div class="value">{{ owner.organization }}</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Name:</div>
+        <div class="value">{{ owner.name }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -27,30 +42,43 @@ const props = defineProps({
 
 .header {
   background: #f1f1f1;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   font-weight: bold;
   border-bottom: 1px solid #ddd;
-  padding-left: 1rem;
 }
 
 .content {
-  padding: 0 0.5rem 0.5rem 1rem;
-}
-
-.icon {
-  margin-right: 0.3rem;
-  color: rgb(2, 190, 2)
+  padding: 0.5rem 1rem;
 }
 
 .row {
+  display: flex;
+  gap: 1rem;
   margin-bottom: 0.25rem;
+  align-items: center;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 150px;
+  font-weight: bold;
+}
+
+.value {
+  flex: 1;
+}
+
+.icon {
+  color: rgb(2, 190, 2);
 }
 
 a {
-  margin-left: 0.2rem;
   color: #3498db;
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }

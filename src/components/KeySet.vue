@@ -11,16 +11,16 @@ const props = defineProps({
     <div class="content">
       <div class="row">
         <div class="label"><strong>Handle:</strong></div>
-        <div class="value"><a
-            href="#"
-            >{{ keyset.handle }}</a></div>
+        <div class="value">
+          <a href="#">{{ keyset.handle }}</a>
+        </div>
       </div>
 
       <div class="row">
         <div class="label"><strong>Registrar:</strong></div>
-        <div class="value"><a
-            href="#"
-            >{{ keyset.registrar }}</a></div>
+        <div class="value">
+          <a href="#">{{ keyset.registrar }}</a>
+        </div>
       </div>
 
       <div class="row dns-row">

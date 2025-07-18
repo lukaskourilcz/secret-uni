@@ -25,8 +25,14 @@ const props = defineProps({
 
           <div class="row">
             <div class="label">
-              <span v-if="contact.publish.organization"><font-awesome-icon class="icon" :icon="['fas', 'eye']" /></span>
-              <span v-else><font-awesome-icon class="icon-red" :icon="['fas', 'eye-slash']" /></span>
+              <span v-if="contact.publish.organization"
+                ><font-awesome-icon class="icon" :icon="['fas', 'eye']"
+              /></span>
+              <span v-else
+                ><font-awesome-icon
+                  class="icon-red"
+                  :icon="['fas', 'eye-slash']"
+              /></span>
               <strong> Organization:</strong>
             </div>
             <div class="value">{{ contact.organization }}</div>
@@ -34,8 +40,14 @@ const props = defineProps({
 
           <div class="row">
             <div class="label">
-              <span v-if="contact.publish.name"><font-awesome-icon class="icon" :icon="['fas', 'eye']" /></span>
-              <span v-else><font-awesome-icon class="icon-red" :icon="['fas', 'eye-slash']" /></span>
+              <span v-if="contact.publish.name"
+                ><font-awesome-icon class="icon" :icon="['fas', 'eye']"
+              /></span>
+              <span v-else
+                ><font-awesome-icon
+                  class="icon-red"
+                  :icon="['fas', 'eye-slash']"
+              /></span>
               <strong> Name:</strong>
             </div>
             <div class="value">{{ contact.name }}</div>
@@ -44,18 +56,12 @@ const props = defineProps({
       </template>
 
       <template v-else>
-        <div
-          v-for="(contact, index) in contacts"
-          :key="index"
-          class="row"
-        >
+        <div v-for="(contact, index) in contacts" :key="index" class="row">
           <div class="label">
-           <strong>{{ contact.name }}:</strong>
+            <strong>{{ contact.name }}:</strong>
           </div>
           <div class="value">
-             <a
-            href="#"
-          >{{ contact.handle }}</a>
+            <a href="#">{{ contact.handle }}</a>
           </div>
         </div>
       </template>
@@ -98,12 +104,12 @@ const props = defineProps({
 
 .icon {
   margin-right: 0.2rem;
-  color: rgb(2, 190, 2)
+  color: rgb(2, 190, 2);
 }
 
 .icon-red {
   margin-right: 0.2rem;
-  color: red
+  color: red;
 }
 
 .label {

@@ -11,23 +11,23 @@ const props = defineProps({
     <div class="content">
       <div class="row">
         <div class="label"><strong>Handle:</strong></div>
-        <div class="value"><a
-            href="#"
-          >{{ nsset.handle }}</a></div>
+        <div>
+          <a href="#">{{ nsset.handle }}</a>
+        </div>
       </div>
 
       <div class="row">
         <div class="label"><strong>Registrar:</strong></div>
-        <div class="value"><a
-            href="#"
-          >{{ nsset.registrar }}</a></div>
+        <div>
+          <a href="#">{{ nsset.registrar }}</a>
+        </div>
       </div>
 
       <div class="row dns-row">
         <div class="label dns"><strong>DNS Records:</strong></div>
         <div class="value">
           <div v-for="(dns, index) in nsset.dns" :key="index">
-           {{ dns.name }} — {{ dns.ip_address }}
+            {{ dns.name }} — {{ dns.ip_address }}
           </div>
         </div>
       </div>

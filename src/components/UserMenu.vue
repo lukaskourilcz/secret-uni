@@ -31,7 +31,9 @@ function toggleMenu() {
       <div class="menu-divider"></div>
 
       <div class="menu-item">
-        <span class="icon"><font-awesome-icon :icon="['fas', 'right-from-bracket']" /></span>
+        <span class="icon"
+          ><font-awesome-icon :icon="['fas', 'right-from-bracket']"
+        /></span>
         Logout
       </div>
     </div>

@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
 const props = defineProps({
-  authInfo: { type: String, required: true }
-})
+  authInfo: { type: String, required: true },
+});
 
-const showSecret = ref(false)
+const showSecret = ref(false);
 </script>
 
 <template>
