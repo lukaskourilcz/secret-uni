@@ -6,7 +6,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="admin-contacts">
+  <div class="admin-contacts card">
     <h2>Administrative Contacts</h2>
 
     <div v-for="(contact, index) in contacts" :key="index" class="contact-card">

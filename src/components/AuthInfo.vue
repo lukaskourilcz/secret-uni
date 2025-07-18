@@ -9,7 +9,7 @@ const showSecret = ref(false)
 </script>
 
 <template>
-  <div class="auth-info">
+  <div class="auth-info card">
     <span>AuthInfo:</span>
     <button @click="showSecret = !showSecret">Show</button>
     <span v-if="showSecret" class="secret">{{ authInfo }}</span>

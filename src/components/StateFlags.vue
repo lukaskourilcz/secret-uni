@@ -16,7 +16,7 @@ const filteredFlags = computed(() => {
 </script>
 
 <template>
-  <div class="flags">
+  <div class="flags card">
     <h2>State Flags</h2>
     <ul>
       <li

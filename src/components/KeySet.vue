@@ -5,7 +5,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="keyset">
+  <div class="keyset card">
     <h2>Key Set</h2>
 
     <p><strong>Handle:</strong> {{ keyset.handle }}</p>

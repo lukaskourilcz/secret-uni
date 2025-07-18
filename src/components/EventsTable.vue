@@ -11,7 +11,7 @@ function formatDate(dateStr) {
 </script>
 
 <template>
-  <div class="events">
+  <div class="events card">
     <h2>Events</h2>
     <table>
       <thead>

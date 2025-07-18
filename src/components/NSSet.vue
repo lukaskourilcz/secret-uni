@@ -5,7 +5,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="nsset">
+  <div class="nsset card">
     <h2>NS Set</h2>
 
     <p><strong>Handle:</strong> {{ nsset.handle }}</p>

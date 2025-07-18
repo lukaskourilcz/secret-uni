@@ -57,16 +57,33 @@ onMounted(async () => {
   margin: 0 auto;
   padding: 1rem;
 }
+
 .content {
   margin-top: 2rem;
 }
+
 .main {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
 }
+
 .left,
 .right {
   flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--spacing-sm);
+  padding-left: 1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
 </style>
+

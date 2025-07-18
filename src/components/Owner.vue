@@ -5,7 +5,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="owner">
+  <div class="owner card">
     <h2>Owner</h2>
     <p><strong>Handle:</strong> {{ owner.handle }}</p>
     <p><strong>Organization:</strong> {{ owner.organization }}</p>
