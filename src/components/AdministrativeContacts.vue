@@ -1,9 +1,3 @@
-<script setup>
-const props = defineProps({
-  contacts: { type: Array, required: true }
-})
-</script>
-
 <template>
   <div class="admin-contacts">
     <h2>Administrative Contacts</h2>
@@ -14,15 +8,25 @@ const props = defineProps({
       class="contact-card"
     >
       <p><strong>Handle:</strong> {{ contact.handle }}</p>
-      <p v-if="contact.publish.organization">
-        <strong>Organization:</strong> {{ contact.organization }}
-      </p>
-      <p v-if="contact.publish.name">
-        <strong>Name:</strong> {{ contact.name }}
-      </p>
+
+      <template v-if="verbose">
+        <p v-if="contact.publish.organization">
+          <strong>Organization:</strong> {{ contact.organization }}
+        </p>
+        <p v-if="contact.publish.name">
+          <strong>Name:</strong> {{ contact.name }}
+        </p>
+      </template>
     </div>
   </div>
 </template>
+
+<script setup>
+const props = defineProps({
+  contacts: { type: Array, required: true },
+  verbose: { type: Boolean, required: true }
+})
+</script>
 
 <style scoped>
 .admin-contacts {
