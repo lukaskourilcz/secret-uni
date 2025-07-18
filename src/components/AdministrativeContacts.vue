@@ -25,8 +25,8 @@ const props = defineProps({
 
           <div class="row">
             <div class="label">
-              <span v-if="contact.publish.organization">✅</span>
-              <span v-else>❌</span>
+              <span v-if="contact.publish.organization"><font-awesome-icon :icon="['fas', 'eye']" /></span>
+              <span v-else><font-awesome-icon :icon="['fas', 'eye-slash']" /></span>
               <strong> Organization:</strong>
             </div>
             <div class="value">{{ contact.organization }}</div>
@@ -34,8 +34,8 @@ const props = defineProps({
 
           <div class="row">
             <div class="label">
-              <span v-if="contact.publish.name">✅</span>
-              <span v-else>❌</span>
+              <span v-if="contact.publish.name"><font-awesome-icon :icon="['fas', 'eye']" /></span>
+              <span v-else><font-awesome-icon :icon="['fas', 'eye-slash']" /></span>
               <strong> Name:</strong>
             </div>
             <div class="value">{{ contact.name }}</div>
