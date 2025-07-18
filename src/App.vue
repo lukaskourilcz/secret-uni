@@ -1,3 +1,22 @@
+<script setup>
+import { ref, onMounted } from 'vue'
+import DomainHeader from './components/DomainHeader.vue'
+import AuthInfo from './components/AuthInfo.vue'
+import EventsTable from './components/EventsTable.vue'
+import StateFlags from './components/StateFlags.vue'
+import Owner from './components/Owner.vue'
+import AdministrativeContacts from './components/AdministrativeContacts.vue'
+
+
+const domainData = ref(null)
+const verbose = ref(false)
+
+onMounted(async () => {
+  const res = await fetch('/domain-detail.json')
+  domainData.value = await res.json()
+})
+</script>
+
 <template>
   <div class="app">
     <DomainHeader
@@ -16,28 +35,12 @@
         <div class="right">
           <Owner :owner="domainData.owner" />
           <StateFlags :flags="domainData.state_flags.flags" />
+          <AdministrativeContacts :contacts="domainData.administrative_contacts" />
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref, onMounted } from 'vue'
-import DomainHeader from './components/DomainHeader.vue'
-import AuthInfo from './components/AuthInfo.vue'
-import EventsTable from './components/EventsTable.vue'
-import StateFlags from './components/StateFlags.vue'
-import Owner from './components/Owner.vue'
-
-const domainData = ref(null)
-const verbose = ref(false)
-
-onMounted(async () => {
-  const res = await fetch('/domain-detail.json')
-  domainData.value = await res.json()
-})
-</script>
 
 <style>
 .app {
@@ -57,3 +60,5 @@ onMounted(async () => {
   flex: 1 1 300px;
 }
 </style>
+
+
