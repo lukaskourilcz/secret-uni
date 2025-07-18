@@ -1,5 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import DomainHeader from './components/DomainHeader.vue'
+import AuthInfo from './components/AuthInfo.vue'
 
 const domainData = ref(null)
 
@@ -14,6 +16,8 @@ onMounted(async () => {
 
 <div>
   <h1>Neviditelna univerzita</h1>
+  <DomainHeader/>
+  <AuthInfo />
 </div>
 
 </template>
