@@ -64,17 +64,24 @@ onMounted(async () => {
 
 .main {
   display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
 .left,
 .right {
-  flex: 1 1 300px;
+  flex: 1;
+  min-width: 350px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
+
+@media (max-width: 900px) {
+  .main {
+    flex-direction: column;
+  }
+}
+
 
 .card {
   background: var(--color-surface);
