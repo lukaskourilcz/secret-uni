@@ -15,8 +15,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faCircleChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faEarthAmericas } from "@fortawesome/free-solid-svg-icons/faEarthAmericas";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUser, faRightFromBracket, faEye, faEyeSlash, faCircleChevronDown);
+library.add(faUser, faRightFromBracket, faEye, faEyeSlash, faCircleChevronDown, faEarthAmericas, faBars);
 
 const app = createApp(App);
 app.component("font-awesome-icon", FontAwesomeIcon);

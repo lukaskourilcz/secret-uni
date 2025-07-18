@@ -17,7 +17,7 @@ const props = defineProps({
           class="contact-card"
         >
           <div class="row">
-            <div class="label"><strong>Handle:</strong></div>
+            <div class="label">Handle:</div>
             <div class="value">
               <a href="#">{{ contact.handle }}</a>
             </div>
@@ -33,7 +33,7 @@ const props = defineProps({
                   class="icon-red"
                   :icon="['fas', 'eye-slash']"
               /></span>
-              <strong> Organization:</strong>
+              Organization:
             </div>
             <div class="value">{{ contact.organization }}</div>
           </div>
@@ -48,7 +48,7 @@ const props = defineProps({
                   class="icon-red"
                   :icon="['fas', 'eye-slash']"
               /></span>
-              <strong> Name:</strong>
+              Name:
             </div>
             <div class="value">{{ contact.name }}</div>
           </div>
@@ -57,9 +57,7 @@ const props = defineProps({
 
       <template v-else>
         <div v-for="(contact, index) in contacts" :key="index" class="row">
-          <div class="label">
-            <strong>{{ contact.name }}:</strong>
-          </div>
+          <div class="label">{{ contact.name }}:</div>
           <div class="value">
             <a href="#">{{ contact.handle }}</a>
           </div>
@@ -79,7 +77,7 @@ const props = defineProps({
 .header {
   background: #f1f1f1;
   padding: 0.5rem 1rem;
-  font-weight: bold;
+  font-weight: 500;
   border-bottom: 1px solid #ddd;
 }
 
@@ -114,7 +112,7 @@ const props = defineProps({
 
 .label {
   min-width: 150px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .value {

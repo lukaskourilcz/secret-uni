@@ -43,7 +43,6 @@ const props = defineProps({
 .header {
   background: #f1f1f1;
   padding: 0.5rem 1rem;
-  font-weight: bold;
   border-bottom: 1px solid #ddd;
 }
 
@@ -63,7 +62,7 @@ const props = defineProps({
   align-items: center;
   gap: 0.25rem;
   min-width: 150px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .value {

@@ -10,21 +10,21 @@ const props = defineProps({
 
     <div class="content">
       <div class="row">
-        <div class="label"><strong>Handle:</strong></div>
+        <div class="label">Handle:</div>
         <div>
           <a href="#">{{ nsset.handle }}</a>
         </div>
       </div>
 
       <div class="row">
-        <div class="label"><strong>Registrar:</strong></div>
+        <div class="label">Registrar:</div>
         <div>
           <a href="#">{{ nsset.registrar }}</a>
         </div>
       </div>
 
       <div class="row dns-row">
-        <div class="label dns"><strong>DNS Records:</strong></div>
+        <div class="label dns">DNS Records:</div>
         <div class="value">
           <div v-for="(dns, index) in nsset.dns" :key="index">
             {{ dns.name }} — {{ dns.ip_address }}
@@ -45,7 +45,6 @@ const props = defineProps({
 .header {
   background: #f1f1f1;
   padding: 0.5rem 1rem;
-  font-weight: bold;
   border-bottom: 1px solid #ddd;
 }
 
@@ -63,7 +62,7 @@ const props = defineProps({
 .label {
   display: flex;
   min-width: 120px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .label.dns {

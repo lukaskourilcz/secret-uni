@@ -1,21 +1,28 @@
 <template>
   <div class="app">
-    <aside class="sidebar">
-      <div class="app-name">APPLICATIONS</div>
-      <ul>
-        <li class="active"><span>🗂</span> Registry</li>
-      </ul>
-    </aside>
-
-    <div class="main">
-      <header class="topbar">
+    <header class="topbar">
+      <div class="left">
+        <font-awesome-icon :icon="['fas', 'bars']" class="burger" />
         <h1>Ferda</h1>
-        <div class="user">
-          <UserMenu username="Jan Musílek" />
-        </div>
-      </header>
+      </div>
 
-      <main class="content">
+      <div class="user">
+        <UserMenu username="Jan Musílek" />
+      </div>
+    </header>
+
+    <div class="body">
+      <aside class="sidebar">
+        <div class="app-name">Applications</div>
+        <ul>
+          <li class="active">
+            <font-awesome-icon :icon="['fas', 'earth-americas']" class="icon" />
+            Registry
+          </li>
+        </ul>
+      </aside>
+
+      <main class="main">
         <slot />
       </main>
     </div>
@@ -24,12 +31,51 @@
 
 <script setup>
 import UserMenu from "./UserMenu.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 </script>
 
 <style scoped>
 .app {
   display: flex;
+  flex-direction: column;
   height: 100vh;
+  overflow: hidden;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2196f3;
+  color: #fff;
+  padding: 0 1rem;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.topbar .left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.burger {
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.topbar h1 {
+  font-size: 1.2rem;
+  margin: 0;
+  margin-left: 0.5rem;
+  color: white;
+  font-weight: 500;
+}
+
+.body {
+  display: flex;
+  flex: 1;
   overflow: hidden;
 }
 
@@ -59,6 +105,9 @@ import UserMenu from "./UserMenu.vue";
 .sidebar li {
   padding: 0.75rem 1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .sidebar li.active {
@@ -68,25 +117,9 @@ import UserMenu from "./UserMenu.vue";
 
 .main {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #2196f3;
-  color: #fff;
-  padding: 0 1rem;
-  height: 50px;
-  flex-shrink: 0;
-}
-
-.topbar h1 {
-  font-size: 1.2rem;
-  margin: 0;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #f9f9f9;
 }
 
 .user {
@@ -94,10 +127,7 @@ import UserMenu from "./UserMenu.vue";
   align-items: center;
 }
 
-.content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1rem;
-  background: #f9f9f9;
+.icon {
+  font-size: 1rem;
 }
 </style>

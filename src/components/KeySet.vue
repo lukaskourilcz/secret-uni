@@ -10,21 +10,21 @@ const props = defineProps({
 
     <div class="content">
       <div class="row">
-        <div class="label"><strong>Handle:</strong></div>
+        <div class="label">Handle:</div>
         <div class="value">
           <a href="#">{{ keyset.handle }}</a>
         </div>
       </div>
 
       <div class="row">
-        <div class="label"><strong>Registrar:</strong></div>
+        <div class="label">Registrar:</div>
         <div class="value">
           <a href="#">{{ keyset.registrar }}</a>
         </div>
       </div>
 
       <div class="row dns-row">
-        <div class="label dns"><strong>DNS Keys:</strong></div>
+        <div class="label dns">DNS Keys:</div>
         <div class="value">
           <div
             v-for="(key, index) in keyset.dns_keys"
@@ -50,7 +50,6 @@ const props = defineProps({
 .header {
   background: #f1f1f1;
   padding: 0.5rem 1rem;
-  font-weight: bold;
   border-bottom: 1px solid #ddd;
 }
 
@@ -69,7 +68,7 @@ const props = defineProps({
   display: flex;
   align-items: center;
   min-width: 120px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .dns {
