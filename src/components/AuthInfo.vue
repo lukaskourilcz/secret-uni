@@ -18,7 +18,6 @@ const showSecret = ref(false)
 
 <style scoped>
 .auth-info {
-  margin-top: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;

@@ -15,6 +15,6 @@ const props = defineProps({
 
 <style scoped>
 .owner {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 </style>
