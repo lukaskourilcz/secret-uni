@@ -12,62 +12,51 @@ const props = defineProps({
     <div class="content">
       <template v-if="verbose">
         <div
-          v-for="(contact, index) in contacts"
-          :key="index"
+          v-for="contact in contacts"
+          :key="contact.handle"
           class="contact-card"
         >
           <div class="row">
             <div class="label">Handle:</div>
             <div class="value">
-              <a href="#">{{ contact.handle }}</a>
+              <a href="javascript:void(0)">{{ contact.handle }}</a>
             </div>
           </div>
 
-          <div class="row">
+          <div
+            v-for="field in ['organization', 'name']"
+            :key="field"
+            class="row"
+          >
             <div class="label">
-              <span v-if="contact.publish.organization"
-                ><font-awesome-icon class="icon" :icon="['fas', 'eye']"
-              /></span>
-              <span v-else
-                ><font-awesome-icon
-                  class="icon-red"
-                  :icon="['fas', 'eye-slash']"
-              /></span>
-              Organization:
+              <font-awesome-icon
+                :class="contact.publish[field] ? 'icon' : 'icon-red'"
+                :icon="contact.publish[field] ? ['fas', 'eye'] : ['fas', 'eye-slash']"
+              />
+              {{ field.charAt(0).toUpperCase() + field.slice(1) }}:
             </div>
-            <div class="value">{{ contact.organization }}</div>
-          </div>
-
-          <div class="row">
-            <div class="label">
-              <span v-if="contact.publish.name"
-                ><font-awesome-icon class="icon" :icon="['fas', 'eye']"
-              /></span>
-              <span v-else
-                ><font-awesome-icon
-                  class="icon-red"
-                  :icon="['fas', 'eye-slash']"
-              /></span>
-              Name:
+            <div class="value">
+              {{ contact[field] || '—' }}
             </div>
-            <div class="value">{{ contact.name }}</div>
           </div>
         </div>
       </template>
 
       <template v-else>
-        <div v-for="(contact, index) in contacts" :key="index" class="row">
-          <div class="label">{{ contact.name }}: </div>
+        <div
+          v-for="contact in contacts"
+          :key="contact.handle"
+          class="row"
+        >
+          <div class="label">{{ contact.name }}:</div>
           <div class="value">
-            <a href="#">{{ contact.handle }}</a>
+            <a href="javascript:void(0)">{{ contact.handle }}</a>
           </div>
         </div>
       </template>
     </div>
   </div>
 </template>
-
----
 
 <style scoped>
 .admin-contacts {
