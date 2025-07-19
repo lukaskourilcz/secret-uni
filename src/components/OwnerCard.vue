@@ -15,7 +15,7 @@ const props = defineProps({
           Handle:
         </div>
         <div class="value">
-          <a href="#">{{ owner.handle }}</a>
+          <a href="javascript:void(0)">{{ owner.handle }}</a>
         </div>
       </div>
 
@@ -24,12 +24,16 @@ const props = defineProps({
           <font-awesome-icon class="icon" :icon="['fas', 'eye']" />
           Organization:
         </div>
-        <div class="value">{{ owner.organization }}</div>
+        <div class="value">
+          {{ owner.organization || '—' }}
+        </div>
       </div>
 
       <div class="row">
         <div class="label">Name:</div>
-        <div class="value">{{ owner.name }}</div>
+        <div class="value">
+          {{ owner.name || '—' }}
+        </div>
       </div>
     </div>
   </div>
@@ -44,6 +48,7 @@ const props = defineProps({
   background: #f1f1f1;
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #ddd;
+  font-weight: 500;
 }
 
 .content {
@@ -55,6 +60,7 @@ const props = defineProps({
   gap: 1rem;
   margin-bottom: 0.25rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .label {
@@ -67,6 +73,7 @@ const props = defineProps({
 
 .value {
   flex: 1;
+  word-break: break-word;
 }
 
 .icon {
