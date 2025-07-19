@@ -87,4 +87,14 @@ function toggle() {
   font-size: 0.85rem;
   color: #555;
 }
+
+@media (max-width: 480px) {
+
+  .expires {
+    margin-top: -1rem;
+
+  }
+}
+
+
 </style>
