@@ -5,15 +5,24 @@ const props = defineProps({
   events: { type: Object, required: true },
 });
 
-const orderedEvents = computed(() => [
-  { name: "Create date", event: props.events?.registered },
-  { name: "Update date", event: props.events?.updated },
-  { name: "Transfer date", event: props.events?.transferred },
-  { name: "Delete date", event: props.events?.unregistered },
-]);
+const orderedEvents = computed(() =>
+  [
+    { name: "Create date", event: props.events?.registered },
+    { name: "Update date", event: props.events?.updated },
+    { name: "Transfer date", event: props.events?.transferred },
+    { name: "Delete date", event: props.events?.unregistered },
+  ].map((item) => ({
+    ...item,
+    formattedDate: item.event?.timestamp
+      ? formatDate(item.event.timestamp)
+      : "—",
+    registrar: item.event?.registrar_handle || "—",
+  }))
+);
 
 function formatDate(dateStr) {
   const date = new Date(dateStr);
+  if (isNaN(date)) return "—";
   return date.toLocaleString("en-US", {
     month: "short",
     day: "2-digit",
@@ -31,17 +40,17 @@ function formatDate(dateStr) {
 
     <div class="table">
       <div
-        v-for="({ name, event }, index) in orderedEvents"
-        :key="index"
+        v-for="{ name, formattedDate, registrar } in orderedEvents"
+        :key="name"
         class="table-row"
       >
         <div class="label">{{ name }}</div>
+        <div class="value">{{ formattedDate }}</div>
         <div class="value">
-          {{ event?.timestamp ? formatDate(event.timestamp) : "—" }}
-        </div>
-        <div class="value">
-          <template v-if="event?.registrar_handle">
-            <a href="#" class="registrar-link">{{ event.registrar_handle }}</a>
+          <template v-if="registrar !== '—'">
+            <a class="registrar-link" href="javascript:void(0)">
+              {{ registrar }}
+            </a>
           </template>
           <template v-else> — </template>
         </div>
@@ -99,19 +108,14 @@ function formatDate(dateStr) {
 }
 
 @media (max-width: 480px) {
-
   .table-row {
-  font-size: 0.7rem;
-
+    font-size: 0.7rem;
   }
 }
 
 @media (max-width: 400px) {
-
   .table-row {
-  font-size: 0.6rem;
-
+    font-size: 0.6rem;
   }
 }
-
 </style>
