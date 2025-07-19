@@ -1,16 +1,47 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from "vue";
 import UserMenu from "./UserMenu.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 const username = "Jan Musílek";
+const sidebarVisible = ref(true);
 
+const sidebarItems = [
+  { icon: ["fas", "earth-americas"], label: "Registry", active: true },
+];
+
+function toggleSidebar() {
+  sidebarVisible.value = !sidebarVisible.value;
+}
+
+function handleResize() {
+  if (window.innerWidth < 1180) {
+    sidebarVisible.value = false;
+  } else {
+    sidebarVisible.value = true;
+  }
+}
+
+onMounted(() => {
+  handleResize();
+  window.addEventListener("resize", handleResize);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+});
 </script>
 
 <template>
   <div class="app">
     <header class="topbar" role="banner">
       <div class="left">
-        <font-awesome-icon :icon="['fas', 'bars']" class="burger" aria-label="Menu" />
+        <font-awesome-icon
+          :icon="['fas', 'bars']"
+          class="burger"
+          aria-label="Menu"
+          @click="toggleSidebar"
+        />
         <h1>Ferda</h1>
       </div>
 
@@ -20,12 +51,20 @@ const username = "Jan Musílek";
     </header>
 
     <div class="body">
-      <aside class="sidebar" role="complementary">
+      <aside
+        class="sidebar"
+        role="complementary"
+        :class="{ hidden: !sidebarVisible }"
+      >
         <div class="app-name">Applications</div>
         <ul>
-          <li class="active">
-            <font-awesome-icon :icon="['fas', 'earth-americas']" class="icon" />
-            Registry
+          <li
+            v-for="item in sidebarItems"
+            :key="item.label"
+            :class="{ active: item.active }"
+          >
+            <font-awesome-icon :icon="item.icon" class="icon" />
+            {{ item.label }}
           </li>
         </ul>
       </aside>
@@ -88,12 +127,11 @@ const username = "Jan Musílek";
   border-right: 1px solid #ddd;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease-in-out;
 }
 
-@media (max-width: 1180px) {
-  .sidebar {
-    display: none;
-  }
+.sidebar.hidden {
+  display: none !important;
 }
 
 .app-name {
