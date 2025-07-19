@@ -87,6 +87,12 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
   flex-direction: column;
 }
 
+@media (max-width: 639px) {
+  .sidebar {
+    display: none;
+  }
+}
+
 .app-name {
   padding: 1rem;
   font-weight: bold;
