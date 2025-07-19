@@ -7,38 +7,32 @@ const props = defineProps({
 });
 
 const filteredFlags = computed(() => {
-  if (props.verbose) {
-    return props.flags;
-  } else {
-    return props.flags.filter((flag) => flag.active);
-  }
+  return props.verbose
+    ? props.flags
+    : props.flags.filter((flag) => flag.active);
 });
 
 const screenWidth = ref(window.innerWidth);
 
-onMounted(() => {
-  const onResize = () => {
-    screenWidth.value = window.innerWidth;
-  };
-  window.addEventListener("resize", onResize);
+function onResize() {
+  screenWidth.value = window.innerWidth;
+}
 
-  onUnmounted(() => {
-    window.removeEventListener("resize", onResize);
-  });
+onMounted(() => {
+  window.addEventListener("resize", onResize);
+});
+onUnmounted(() => {
+  window.removeEventListener("resize", onResize);
 });
 
 const columns = computed(() => {
-  if (screenWidth.value < 480) {
-    return [
-      filteredFlags.value.slice(0, 11),
-      filteredFlags.value.slice(11, 20),
-    ];
-  } else {
-    return [
-      filteredFlags.value.slice(0, 10),
-      filteredFlags.value.slice(10, 20),
-    ];
-  }
+  const col1Count = screenWidth.value < 480 ? 12 : 10;
+  const col2Start = col1Count;
+
+  return [
+    filteredFlags.value.slice(0, col1Count),
+    filteredFlags.value.slice(col2Start, 20),
+  ];
 });
 </script>
 
@@ -52,7 +46,11 @@ const columns = computed(() => {
         v-for="(columnFlags, colIdx) in columns"
         :key="colIdx"
       >
-        <div v-for="(flag, index) in columnFlags" :key="index" class="flag-row">
+        <div
+          v-for="flag in columnFlags"
+          :key="flag.description"
+          class="flag-row"
+        >
           <span class="icon" :class="flag.active ? 'active' : 'inactive'">
             {{ flag.active ? "✅" : "❌" }}
           </span>
@@ -98,7 +96,6 @@ const columns = computed(() => {
   gap: 0.25rem;
   font-size: 0.8rem;
   padding: 0.2rem 1rem;
-
 }
 
 .icon {
@@ -125,8 +122,7 @@ const columns = computed(() => {
 }
 
 @media (max-width: 400px) {
-
-.flag-row {
+  .flag-row {
     font-size: 0.65rem;
   }
   .icon {
