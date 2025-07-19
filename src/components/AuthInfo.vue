@@ -7,7 +7,16 @@ const props = defineProps({
 });
 
 const showSecret = ref(false);
-const authInfo = ref("S3cretPwd!76");
+const authInfo = ref("");
+
+async function toggle() {
+  if (!showSecret.value) {
+    const res = await fetch("/api/auth-info");
+    const data = await res.text();
+    authInfo.value = data;
+  }
+  showSecret.value = !showSecret.value;
+}
 
 const formattedExpiresAt = computed(() => {
   const expiresAt = props.expiresAt;
@@ -24,21 +33,26 @@ const formattedExpiresAt = computed(() => {
   });
 });
 
-function toggle() {
-  showSecret.value = !showSecret.value;
-}
 </script>
 
 <template>
   <div class="auth-info card">
     <div class="row">
-      <span class="label">AuthInfo:</span>
-      <button class="auth-btn" @click="toggle">
-        {{ showSecret ? authInfo : "SHOW" }}
-      </button>
-      <span class="expires">
+      <div class="left">
+        <span class="label">AuthInfo:</span>
+
+        <button class="auth-btn" @click="toggle">
+          {{ showSecret ? "HIDE" : "SHOW" }}
+        </button>
+
+        <span v-if="showSecret" class="secret">
+          {{ props.authInfo }}
+        </span>
+      </div>
+
+      <div class="right">
         <span class="label">Expires at:</span> {{ formattedExpiresAt }}
-      </span>
+      </div>
     </div>
   </div>
 </template>
@@ -48,19 +62,22 @@ function toggle() {
   padding: 0;
 }
 
-.auth-info .row {
-  justify-content: flex-start;
-  gap: 2rem;
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  gap: 0.5rem;
 }
 
-.row {
+.left,
+.right {
+  flex: 1 1 50%;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  font-size: 0.9rem;
-  flex-wrap: wrap;
 }
 
 .label {
@@ -84,6 +101,11 @@ function toggle() {
   background-color: #2980b9;
 }
 
+.secret {
+  color: red;
+  font-weight: 500;
+}
+
 .expires {
   font-size: 0.85rem;
   color: #555;
@@ -96,6 +118,4 @@ function toggle() {
 
   }
 }
-
-
 </style>
