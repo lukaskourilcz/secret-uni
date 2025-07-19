@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 const props = defineProps({
@@ -11,10 +11,27 @@ const menuOpen = ref(false);
 function toggleMenu() {
   menuOpen.value = !menuOpen.value;
 }
+
+function closeMenu() {
+  menuOpen.value = false;
+}
+
+function handleClickOutside(e) {
+  if (!e.target.closest(".user-menu")) {
+    closeMenu();
+  }
+}
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+onUnmounted(() => {
+  document.removeEventListener("click", handleClickOutside);
+});
 </script>
 
 <template>
-  <div class="user" @click="toggleMenu">
+  <div class="user-menu" @click.stop="toggleMenu" role="button" tabindex="0">
     <span class="username">{{ username }}</span>
     <span class="icon">
       <font-awesome-icon :icon="['fas', 'circle-chevron-down']" />
@@ -33,7 +50,7 @@ function toggleMenu() {
 
       <div class="menu-divider"></div>
 
-      <div class="menu-item">
+      <div class="menu-item" @click="$emit('logout')">
         <span class="icon">
           <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
         </span>
@@ -44,18 +61,20 @@ function toggleMenu() {
 </template>
 
 <style scoped>
-.user {
+.user-menu {
   position: relative;
   cursor: pointer;
   font-weight: 500;
   display: flex;
   align-items: center;
   color: #fff;
+  outline: none;
 }
 
 .username {
   font-size: 0.9rem;
   color: #fff;
+  overflow-wrap: anywhere;
 }
 
 .icon {
