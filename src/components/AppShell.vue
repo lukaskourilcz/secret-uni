@@ -1,23 +1,26 @@
 <script setup>
 import UserMenu from "./UserMenu.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+const username = "Jan Musílek";
+
 </script>
 
 <template>
   <div class="app">
-    <header class="topbar">
+    <header class="topbar" role="banner">
       <div class="left">
-        <font-awesome-icon :icon="['fas', 'bars']" class="burger" />
+        <font-awesome-icon :icon="['fas', 'bars']" class="burger" aria-label="Menu" />
         <h1>Ferda</h1>
       </div>
 
       <div class="user">
-        <UserMenu username="Jan Musílek" />
+        <UserMenu :username="username" />
       </div>
     </header>
 
     <div class="body">
-      <aside class="sidebar">
+      <aside class="sidebar" role="complementary">
         <div class="app-name">Applications</div>
         <ul>
           <li class="active">
@@ -27,7 +30,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
         </ul>
       </aside>
 
-      <main class="main">
+      <main class="main" role="main">
         <slot />
       </main>
     </div>
