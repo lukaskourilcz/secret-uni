@@ -13,24 +13,24 @@ const orderedEvents = computed(() =>
     { name: "Delete date", event: props.events?.unregistered },
   ].map((item) => ({
     ...item,
-    formattedDate: item.event?.timestamp
-      ? formatDate(item.event.timestamp)
-      : "—",
+    formattedDate: formatDate(item.event?.timestamp),
     registrar: item.event?.registrar_handle || "—",
   }))
 );
 
 function formatDate(dateStr) {
+  if (!dateStr) return "—";
   const date = new Date(dateStr);
-  if (isNaN(date)) return "—";
-  return date.toLocaleString("en-US", {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  });
+  return isNaN(date)
+    ? "—"
+    : date.toLocaleString("en-US", {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
 }
 </script>
 
@@ -47,12 +47,12 @@ function formatDate(dateStr) {
         <div class="label">{{ name }}</div>
         <div class="value">{{ formattedDate }}</div>
         <div class="value">
-          <template v-if="registrar !== '—'">
+          <span v-if="registrar !== '—'">
             <a class="registrar-link" href="javascript:void(0)">
               {{ registrar }}
             </a>
-          </template>
-          <template v-else> — </template>
+          </span>
+          <span v-else>—</span>
         </div>
       </div>
     </div>
@@ -110,12 +110,14 @@ function formatDate(dateStr) {
 @media (max-width: 480px) {
   .table-row {
     font-size: 0.7rem;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 @media (max-width: 400px) {
   .table-row {
     font-size: 0.6rem;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 </style>
