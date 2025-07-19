@@ -3,6 +3,11 @@ const props = defineProps({
   domain: { type: String, required: true },
   verbose: { type: Boolean, required: true },
 });
+
+function onToggle(e) {
+  const checked = e.target.checked;
+  emit("toggle-verbose", checked);
+}
 </script>
 
 <template>
@@ -15,6 +20,7 @@ const props = defineProps({
           type="checkbox"
           :checked="verbose"
           @change="$emit('toggle-verbose', $event.target.checked)"
+          aria-label="Toggle verbose view"
         />
         <span class="slider"></span>
       </label>
@@ -35,12 +41,14 @@ h2 {
   margin: 0;
   font-size: 1.5rem;
   color: #2c3e50;
+  word-break: break-word;
 }
 
 .toggle-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .toggle {
