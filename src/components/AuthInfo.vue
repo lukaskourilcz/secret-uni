@@ -66,6 +66,7 @@ function toggle() {
 .label {
   font-weight: 500;
   color: #333;
+  margin-right: 0.2rem;
 }
 
 .auth-btn {
