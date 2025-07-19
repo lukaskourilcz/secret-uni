@@ -97,4 +97,13 @@ function formatDate(dateStr) {
 .registrar-link:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 480px) {
+
+  .table-row {
+  font-size: 0.7rem;
+
+  }
+}
+
 </style>
