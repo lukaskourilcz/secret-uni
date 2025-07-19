@@ -31,26 +31,24 @@ const props = defineProps({
             <div class="label">
               <font-awesome-icon
                 :class="contact.publish[field] ? 'icon' : 'icon-red'"
-                :icon="contact.publish[field] ? ['fas', 'eye'] : ['fas', 'eye-slash']"
+                :icon="
+                  contact.publish[field] ? ['fas', 'eye'] : ['fas', 'eye-slash']
+                "
               />
               {{ field.charAt(0).toUpperCase() + field.slice(1) }}:
             </div>
             <div class="value">
-              {{ contact[field] || '—' }}
+              {{ contact[field] || "—" }}
             </div>
           </div>
         </div>
       </template>
 
       <template v-else>
-        <div
-          v-for="contact in contacts"
-          :key="contact.handle"
-          class="row"
-        >
+        <div v-for="contact in contacts" :key="contact.handle" class="row">
           <div class="label">{{ contact.name }}:</div>
           <div class="value">
-            <a href="javascript:void(0)">{{ contact.handle }}</a>
+            <a href="javascript:void(0)">{{ contact.handle }} </a>
           </div>
         </div>
       </template>

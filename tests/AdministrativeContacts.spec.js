@@ -22,6 +22,6 @@ test("shows only handles when verbose=false", () => {
     },
   });
 
-  expect(wrapper.text()).toContain("Knihovník: KNIHOVNIK");
-  expect(wrapper.text()).toContain("Mrakoplaš: MRAKOPLAS");
+expect(wrapper.text()).toContain("Knihovník:KNIHOVNIK");
+expect(wrapper.text()).toContain("Mrakoplaš:MRAKOPLAS");
 });

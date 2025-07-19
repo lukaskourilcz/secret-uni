@@ -38,7 +38,7 @@ const formattedExpiresAt = computed(() => {
         </button>
 
         <span v-if="showSecret" class="secret">
-          {{ props.authInfo }}
+          {{ authInfo }}
         </span>
       </div>
 
@@ -97,6 +97,4 @@ const formattedExpiresAt = computed(() => {
   color: red;
   font-weight: 500;
 }
-
-
 </style>
