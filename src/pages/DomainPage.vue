@@ -13,46 +13,64 @@ import KeySet from "../components/KeySet.vue";
 
 const domainData = ref(null);
 const verbose = ref(false);
+const loading = ref(true);
 
 onMounted(async () => {
-  const res = await fetch("/domain-detail.json");
-  domainData.value = await res.json();
+  try {
+    const res = await fetch("/domain-detail.json");
+    if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+    domainData.value = await res.json();
+  } catch (err) {
+    console.error("Error loading domain data:", err);
+  } finally {
+    loading.value = false;
+  }
 });
 </script>
 
 <template>
   <AppShell>
-    <DomainHeader
-      v-if="domainData"
-      :domain="domainData.fqdn"
-      :verbose="verbose"
-      @toggle-verbose="verbose = $event"
-    />
+    <template v-if="loading">
+      <div class="loading">Loading…</div>
+    </template>
 
-    <div v-if="domainData" class="content">
-      <div class="main">
-        <div class="left">
-          <AuthInfo
-            :auth-info="domainData.authInfo"
-            :expires-at="domainData.expires_at"
-          />
-          <EventsTable :events="domainData.events" />
-          <StateFlags
-            :flags="domainData.state_flags.flags"
-            :verbose="verbose"
-          />
-        </div>
-        <div class="right">
-          <Owner :owner="domainData.owner" />
-          <AdministrativeContacts
-            :contacts="domainData.administrative_contacts"
-            :verbose="verbose"
-          />
-          <NSSet :nsset="domainData.nsset" />
-          <KeySet :keyset="domainData.keyset" />
+    <template v-else-if="domainData">
+      <DomainHeader
+        :domain="domainData.fqdn"
+        :verbose="verbose"
+        @toggle-verbose="verbose = $event"
+      />
+
+      <div class="content">
+        <div class="main">
+          <div class="main-left">
+            <AuthInfo
+              :auth-info="domainData.authInfo"
+              :expires-at="domainData.expires_at"
+            />
+            <EventsTable :events="domainData.events" />
+            <StateFlags
+              :flags="domainData.state_flags.flags"
+              :verbose="verbose"
+            />
+          </div>
+
+          <div class="main-right">
+            <Owner :owner="domainData.owner" />
+            <AdministrativeContacts
+              :contacts="domainData.administrative_contacts"
+              :verbose="verbose"
+            />
+            <NSSet :nsset="domainData.nsset" />
+            <KeySet :keyset="domainData.keyset" />
+          </div>
         </div>
       </div>
-    </div>
+    </template>
+
+    <template v-else>
+      <div class="error">Failed to load domain data.</div>
+    </template>
   </AppShell>
 </template>
 
@@ -67,7 +85,7 @@ onMounted(async () => {
   align-items: flex-start;
 }
 
-.left {
+.main-left {
   flex: 2;
   min-width: 0;
   display: flex;
@@ -75,12 +93,19 @@ onMounted(async () => {
   gap: 0.5rem;
 }
 
-.right {
+.main-right {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
 }
 
 @media (max-width: 900px) {

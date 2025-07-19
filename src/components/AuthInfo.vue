@@ -7,21 +7,14 @@ const props = defineProps({
 });
 
 const showSecret = ref(false);
-const authInfo = ref("");
 
-async function toggle() {
-  if (!showSecret.value) {
-    const res = await fetch("/api/auth-info");
-    const data = await res.text();
-    authInfo.value = data;
-  }
+function toggle() {
   showSecret.value = !showSecret.value;
 }
 
 const formattedExpiresAt = computed(() => {
-  const expiresAt = props.expiresAt;
-  if (!expiresAt) return "—";
-  const date = new Date(expiresAt);
+  if (!props.expiresAt) return "—";
+  const date = new Date(props.expiresAt);
   if (isNaN(date)) return "—";
   return date.toLocaleString("en-US", {
     month: "short",
@@ -32,7 +25,6 @@ const formattedExpiresAt = computed(() => {
     second: "2-digit",
   });
 });
-
 </script>
 
 <template>
@@ -106,16 +98,5 @@ const formattedExpiresAt = computed(() => {
   font-weight: 500;
 }
 
-.expires {
-  font-size: 0.85rem;
-  color: #555;
-}
 
-@media (max-width: 500px) {
-
-  .expires {
-    margin-top: -1rem;
-
-  }
-}
 </style>
