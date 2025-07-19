@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 
 const props = defineProps({
   flags: { type: Array, required: true },
@@ -14,10 +14,31 @@ const filteredFlags = computed(() => {
   }
 });
 
+const screenWidth = ref(window.innerWidth);
+
+onMounted(() => {
+  const onResize = () => {
+    screenWidth.value = window.innerWidth;
+  };
+  window.addEventListener("resize", onResize);
+
+  onUnmounted(() => {
+    window.removeEventListener("resize", onResize);
+  });
+});
+
 const columns = computed(() => {
-  const col1 = filteredFlags.value.slice(0, 10);
-  const col2 = filteredFlags.value.slice(10, 20);
-  return [col1, col2];
+  if (screenWidth.value < 480) {
+    return [
+      filteredFlags.value.slice(0, 11),
+      filteredFlags.value.slice(11, 20),
+    ];
+  } else {
+    return [
+      filteredFlags.value.slice(0, 10),
+      filteredFlags.value.slice(10, 20),
+    ];
+  }
 });
 </script>
 
@@ -76,6 +97,7 @@ const columns = computed(() => {
   align-items: center;
   gap: 0.25rem;
   font-size: 0.8rem;
+  margin: 0.2rem;
 }
 
 .icon {
@@ -90,5 +112,14 @@ const columns = computed(() => {
 .text-inactive {
   color: red;
   padding-left: 0.2rem;
+}
+
+@media (max-width: 480px) {
+  .flag-row {
+    font-size: 0.7rem;
+  }
+  .icon {
+    font-size: 0.7rem;
+  }
 }
 </style>
