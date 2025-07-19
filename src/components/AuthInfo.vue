@@ -88,7 +88,7 @@ function toggle() {
   color: #555;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
 
   .expires {
     margin-top: -1rem;

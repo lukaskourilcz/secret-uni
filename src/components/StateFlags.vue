@@ -97,7 +97,8 @@ const columns = computed(() => {
   align-items: center;
   gap: 0.25rem;
   font-size: 0.8rem;
-  margin: 0.2rem;
+  padding: 0.2rem 1rem;
+
 }
 
 .icon {
@@ -120,6 +121,16 @@ const columns = computed(() => {
   }
   .icon {
     font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 400px) {
+
+.flag-row {
+    font-size: 0.65rem;
+  }
+  .icon {
+    font-size: 0.65rem;
   }
 }
 </style>

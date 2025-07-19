@@ -106,4 +106,12 @@ function formatDate(dateStr) {
   }
 }
 
+@media (max-width: 400px) {
+
+  .table-row {
+  font-size: 0.6rem;
+
+  }
+}
+
 </style>

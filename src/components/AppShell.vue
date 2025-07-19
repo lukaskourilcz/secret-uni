@@ -87,7 +87,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
   flex-direction: column;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 1180px) {
   .sidebar {
     display: none;
   }
