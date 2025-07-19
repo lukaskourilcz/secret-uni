@@ -12,14 +12,14 @@ const props = defineProps({
       <div class="row">
         <div class="label">Handle:</div>
         <div class="value">
-          <a href="#">{{ keyset.handle }}</a>
+          <a href="javascript:void(0)">{{ keyset.handle }}</a>
         </div>
       </div>
 
       <div class="row">
         <div class="label">Registrar:</div>
         <div class="value">
-          <a href="#">{{ keyset.registrar }}</a>
+          <a href="javascript:void(0)">{{ keyset.registrar }}</a>
         </div>
       </div>
 
@@ -27,19 +27,19 @@ const props = defineProps({
         <div class="label dns">DNS Keys:</div>
         <div class="value">
           <div
-            v-for="(key, index) in keyset.dns_keys"
-            :key="index"
+            v-if="keyset.dns_keys?.length"
+            v-for="key in keyset.dns_keys"
+            :key="key"
             class="dns-item"
           >
             {{ key }}
           </div>
+          <div v-else class="dns-item">—</div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
----
 
 <style scoped>
 .keyset {
@@ -51,6 +51,7 @@ const props = defineProps({
   background: #f1f1f1;
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #ddd;
+  font-weight: 500;
 }
 
 .content {
@@ -62,6 +63,7 @@ const props = defineProps({
   gap: 1rem;
   margin-bottom: 0.25rem;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .label {
@@ -76,16 +78,16 @@ const props = defineProps({
 }
 
 .row.dns-row {
-  align-items: center;
+  align-items: flex-start;
 }
 
 .value {
   flex: 1;
+  word-break: break-word;
 }
 
 .dns-item {
   padding: 0.25rem 0;
-  word-break: break-all;
 }
 
 a {
