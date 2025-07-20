@@ -128,6 +128,17 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease-in-out;
+  z-index: 100;
+}
+
+@media (max-width: 1180px) {
+  .sidebar {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    height: calc(100% - 50px);
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  }
 }
 
 .sidebar.hidden {
