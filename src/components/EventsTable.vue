@@ -107,6 +107,12 @@ function formatDate(dateStr) {
   text-decoration: underline;
 }
 
+@media (max-width: 900px) {
+.registrar-link {
+  margin-left: 1rem;
+}
+}
+
 @media (max-width: 480px) {
   .table-row {
     font-size: 0.7rem;
